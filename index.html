@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小说工坊 NovelForge · 把小说变成能玩的东西</title>
+<meta name="description" content="本地优先的 AI 写作台：写小说、查一致性、一键生成可玩的视觉小说。写作永久免费。">
+<style>
+  :root {
+    --bg:#0f1115; --panel:#161920; --panel2:#1b1f27; --line:#262b34;
+    --text:#EDE6D6; --dim:#8A9099; --faint:#5f6672; --accent:#E0B070; --accent2:#C1782D;
+    --radius:14px;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--bg); color:var(--text);
+    font:15px/1.7 "Microsoft YaHei UI","Microsoft YaHei","PingFang SC",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a { color:var(--accent); text-decoration:none; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 24px; }
+  section { padding:72px 0; }
+  h1,h2,h3 { margin:0; line-height:1.25; }
+  h2 { font-size:30px; letter-spacing:.5px; }
+  .sub { color:var(--dim); }
+  .kicker { color:var(--accent); font-size:13px; letter-spacing:3px; margin-bottom:10px; }
+
+  /* 导航 */
+  nav {
+    position:sticky; top:0; z-index:20; backdrop-filter:blur(10px);
+    background:rgba(15,17,21,.82); border-bottom:1px solid var(--line);
+  }
+  nav .wrap { display:flex; align-items:center; gap:12px; height:62px; }
+  nav img { width:26px; height:26px; }
+  nav b { font-size:16px; letter-spacing:1px; }
+  nav .links { margin-left:auto; display:flex; gap:22px; align-items:center; }
+  nav .links a { color:var(--dim); font-size:14px; }
+  nav .links a:hover { color:var(--text); }
+
+  .btn {
+    display:inline-block; padding:11px 22px; border-radius:10px; font-weight:700;
+    border:1px solid var(--line); color:var(--text); background:transparent;
+  }
+  .btn:hover { border-color:var(--faint); }
+  .btn.primary { background:var(--accent); color:#1a1409; border-color:var(--accent); }
+  .btn.primary:hover { background:#e8bd85; }
+
+  /* Hero */
+  .hero { padding:88px 0 40px; }
+  .hero h1 { font-size:46px; letter-spacing:1px; }
+  .hero .lead { font-size:18px; color:var(--dim); margin:18px 0 28px; max-width:620px; }
+  .hero .cta { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .hero .meta { color:var(--faint); font-size:13px; margin-top:14px; }
+  .shot {
+    width:100%; border-radius:var(--radius); border:1px solid var(--line);
+    margin-top:44px; display:block; box-shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+
+  /* 卡片 */
+  .grid { display:grid; gap:20px; }
+  .g3 { grid-template-columns:repeat(3,1fr); }
+  .g5 { grid-template-columns:repeat(5,1fr); }
+  .card {
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px;
+  }
+  .card h3 { font-size:16px; margin-bottom:8px; }
+  .card .thumb { width:100%; height:300px; object-fit:cover; object-position:top; display:block; }
+  .card p { margin:0; color:var(--dim); font-size:14px; }
+  .num { color:var(--accent); font:700 12px/1 Consolas,monospace;
+         letter-spacing:2px; margin-right:8px; }
+
+  /* 价格 */
+  .price { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; }
+  .plan {
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; display:flex; flex-direction:column; gap:10px;
+  }
+  .plan.hot { border-color:var(--accent); background:linear-gradient(180deg,#1d1a13,#161920); }
+  .plan .name { color:var(--dim); font-size:13px; letter-spacing:1px; }
+  .plan .amount { font-size:38px; font-weight:700; }
+  .plan .amount small { font-size:14px; color:var(--dim); font-weight:400; margin-left:6px; }
+  .plan ul { margin:6px 0 0; padding-left:18px; color:var(--dim); font-size:14px; }
+  .plan li { margin:4px 0; }
+  .plan .btn { margin-top:auto; text-align:center; }
+
+  /* 流程 */
+  .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; counter-reset:s; }
+  .step { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:20px; }
+  .step:before {
+    counter-increment:s; content:"0" counter(s);
+    color:var(--accent); font:700 12px/1 Consolas,monospace; letter-spacing:2px;
+  }
+  .step h3 { font-size:15px; margin:10px 0 6px; }
+  .step p { margin:0; color:var(--dim); font-size:13.5px; }
+
+  /* FAQ */
+  details {
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:16px 20px; margin-bottom:12px;
+  }
+  summary { cursor:pointer; font-weight:700; }
+  details p { color:var(--dim); margin:10px 0 0; font-size:14px; }
+
+  /* 视频位 */
+  .video {
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    gap:8px; height:320px; border:2px dashed var(--line); border-radius:var(--radius);
+    color:var(--faint); font-size:14px; background:var(--panel);
+  }
+
+  footer { border-top:1px solid var(--line); padding:34px 0; color:var(--faint); font-size:13px; }
+  footer .wrap { display:flex; gap:16px; flex-wrap:wrap; }
+
+  @media (max-width:900px){
+    .g5,.g3,.price,.steps { grid-template-columns:1fr; }
+    .hero h1 { font-size:34px; }
+    nav .links a:not(.btn) { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <img src="img/logo.png" alt="logo">
+    <b>小说工坊</b>
+    <div class="links">
+      <a href="#what">能做什么</a>
+      <a href="#vn">视觉小说</a>
+      <a href="#price">价格</a>
+      <a href="#faq">常见问题</a>
+      <!-- TODO：把这两处换成你的真实链接 -->
+      <a class="btn" href="#download" id="dl-top">下载</a>
+      <a class="btn primary" href="#price" id="buy-top">购买</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">NOVELFORGE · 本地优先</div>
+    <h1>把小说，变成能玩的东西</h1>
+    <p class="lead">
+      写小说、查设定冲突、一键生成可玩的视觉小说。
+      稿子存在你自己的电脑上；AI 只在你按按钮时工作。
+      写作永久免费。
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#download" id="dl">下载 Windows 版</a>
+      <a class="btn" href="#vn">看它能生成什么</a>
+    </div>
+    <div class="meta">Windows 10/11 · 安装包约 182 MB · 免费试用 14 天，送 30 张图</div>
+    <img class="shot" src="img/editor.png" alt="写作界面">
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <div class="kicker">它能做什么</div>
+    <h2>五件事，按顺序做完，一本小说就成型了</h2>
+    <div class="grid g5" style="margin-top:28px">
+      <div class="card"><h3><span class="num">01</span>写</h3><p>人写章纲，模型铺正文。<br>AI 不会偷偷写。</p></div>
+      <div class="card"><h3><span class="num">02</span>查</h3><p>行内一致性提示：<br>伤口、发色、重复句。</p></div>
+      <div class="card"><h3><span class="num">03</span>转</h3><p>正文 → 剧本 → 立绘 →<br>可玩的网页版视觉小说。</p></div>
+      <div class="card"><h3><span class="num">04</span>存</h3><p>每次保存备份到多个目标，<br>冲突时由你选择。</p></div>
+      <div class="card"><h3><span class="num">05</span>出</h3><p>EPUB / 投稿包 /<br>手机阅读版 / Ren'Py。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="vn" style="background:var(--panel2)">
+  <div class="wrap">
+    <div class="kicker">视觉小说</div>
+    <h2>点一次按钮，小说变成能点开玩的东西</h2>
+    <p class="sub" style="max-width:640px;margin-top:12px">
+      自动把正文转成分镜剧本，补齐立绘与背景，导出可直接分享的网页版；
+      也可以导出 Ren'Py 工程，自己继续改。
+    </p>
+    <div class="grid g3" style="margin-top:28px">
+      <div class="card" style="padding:0;overflow:hidden">
+        <img class="thumb" src="img/editor.png" alt="示例作品">
+        <div style="padding:16px 18px"><h3>示例作品开箱即用</h3>
+        <p>内置《示例·第九张票》，打开就能生成。</p></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <img class="thumb" src="img/reader.png" alt="手机阅读版">
+        <div style="padding:16px 18px"><h3>手机阅读版 + 批注</h3>
+        <p>发给读者，他们点段落写批注，回传 JSON 就能看。</p></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <img class="thumb" src="img/security.png" alt="安全中心">
+        <div style="padding:16px 18px"><h3>作品安全中心</h3>
+        <p>多目标备份、可恢复、AI 调用记录可导出。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">20 秒演示</div>
+    <h2>写一章 → 生成 → 打开玩</h2>
+    <div style="margin-top:24px">
+      <video controls playsinline preload="metadata" poster="img/editor.png"
+             style="width:100%;border-radius:14px;border:1px solid var(--line);display:block">
+        <source src="video/demo.mp4" type="video/mp4">
+        你的浏览器不支持 video 标签。
+      </video>
+    </div>
+  </div>
+</section>
+
+<section id="price" style="background:var(--panel2)">
+  <div class="wrap">
+    <div class="kicker">价格</div>
+    <h2>写作永远免费，只有 AI 生成与去水印导出收费</h2>
+    <div class="price" style="margin-top:28px">
+      <div class="plan">
+        <div class="name">免费</div>
+        <div class="amount">¥0</div>
+        <ul>
+          <li>写作 / 大纲 / 审计 / 版本</li>
+          <li>备份 / 多目标恢复</li>
+          <li>EPUB / 投稿包 / 阅读版</li>
+          <li>模板模式生成视觉小说</li>
+          <li>送 30 张图（一次性）</li>
+        </ul>
+        <a class="btn" href="#download" id="dl-free">下载</a>
+      </div>
+      <div class="plan hot">
+        <div class="name">早鸟终身 · 限 100 份</div>
+        <div class="amount">¥199<small>一次性</small></div>
+        <ul>
+          <li>上面全部 +</li>
+          <li>视觉小说导出无水印</li>
+          <li>可填写自己的 API Key</li>
+          <li>永久更新（同大版本）</li>
+        </ul>
+        <a class="btn primary" href="#buy" id="buy-199">立即购买</a>
+      </div>
+      <div class="plan">
+        <div class="name">正式 / 组合</div>
+        <div class="amount">¥299<small>一次性</small></div>
+        <ul>
+          <li>正式终身授权</li>
+          <li>或：终身 + 300 张点数</li>
+          <li>点数永不过期</li>
+        </ul>
+        <a class="btn" href="#buy" id="buy-299">立即购买</a>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:16px;font-size:13.5px">
+      AI 生图按张计点：1 点 = 1 张，点数包 ¥29 / 300 张。模板模式不扣点。
+    </p>
+  </div>
+</section>
+
+<section id="buy">
+  <div class="wrap">
+    <div class="kicker">怎么买</div>
+    <h2>四步，通常 10 分钟内能用上</h2>
+    <div class="steps" style="margin-top:28px">
+      <div class="step"><h3>下载安装</h3><p>先免费试用 14 天，不用付款。</p></div>
+      <div class="step"><h3>复制机器码</h3><p>软件里「激活 / 授权」→ 复制机器码。</p></div>
+      <div class="step"><h3>付款</h3><p>点「打开购买页」，付款后自动收到激活码。</p></div>
+      <div class="step"><h3>粘贴激活</h3><p>回到软件粘贴激活码，即刻解锁。</p></div>
+    </div>
+    <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn primary" href="#download" id="buy-cta">先去试用</a>
+      <a class="btn" href="#" id="shop">打开购买页</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--panel2)">
+  <div class="wrap">
+    <div class="kicker">常见问题</div>
+    <h2>你可能想知道的</h2>
+    <div style="margin-top:24px">
+      <details><summary>稿子会被上传吗？</summary>
+        <p>不会自动上传。正文保存在你本机；只有你主动点 AI 生成时才发送对应内容，
+        并且可以在「AI 授权」里设成「禁止云端」，或开启「脱敏」（人名地名换成代号）。</p></details>
+      <details><summary>没有显卡能用吗？</summary>
+        <p>能。写作、审计、导出全部可用；视觉小说有「模板模式」，用内置素材直接出片。
+        想要 AI 生图可以接本机 ComfyUI，或填云端 API Key。</p></details>
+      <details><summary>AI 生成要额外花钱吗？</summary>
+        <p>要。1 张图 = 1 点，点数包 ¥29 / 300 张；也可以用自己的 API Key，成本自付。
+        模板模式不扣点。</p></details>
+      <details><summary>换电脑怎么办？</summary>
+        <p>激活码绑定机器。换机时联系作者迁移（需提供旧机器码与新机器码）。</p></details>
+      <details><summary>为什么 Windows 提示"未知发布者"？</summary>
+        <p>安装包暂未做代码签名。可以点「更多信息 → 仍要运行」；我们正在处理证书。</p></details>
+    </div>
+  </div>
+</section>
+
+<footer id="download">
+  <div class="wrap">
+    <span>© 2026 小说工坊 NovelForge</span>
+    <a href="#" id="dl-foot">下载 Windows 版</a>
+    <a href="#" id="tok">用户协议</a>
+    <a href="#" id="priv">隐私说明</a>
+    <span style="margin-left:auto">把小说变成能玩的东西</span>
+  </div>
+</footer>
+
+<script>
+// TODO：把这几个链接换成你的真实地址
+const LINKS = {
+  download: "download/NovelForge-setup.exe",
+  shop: "",
+  buy199: "",
+  buy299: "",
+  terms: "licenses/terms.html",
+  privacy: "licenses/privacy.html",
+};
+const set = (id, url) => { const el = document.getElementById(id); if (el) el.href = url; };
+set("dl", LINKS.download); set("dl-top", LINKS.download);
+set("dl-free", LINKS.download); set("dl-foot", LINKS.download);
+set("buy-cta", LINKS.download);
+set("shop", LINKS.shop); set("buy-199", LINKS.buy199); set("buy-299", LINKS.buy299);
+set("tok", LINKS.terms); set("priv", LINKS.privacy);
+const buyTop = document.getElementById("buy-top");
+if (buyTop) buyTop.href = LINKS.shop;
+</script>
+</body>
+</html>
