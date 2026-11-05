@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NovelForge · Turn your novel into something playable</title>
+<meta name="description" content="A local-first Windows writing studio: write novels, catch continuity errors, and turn your book into a playable visual novel.">
+<style>
+  :root{--bg:#0f1115;--panel:#161920;--panel2:#1b1f27;--line:#262b34;
+        --text:#EDE6D6;--dim:#8A9099;--faint:#5f6672;--acc:#E0B070}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font:16px/1.7 -apple-system,"Segoe UI",Inter,"Microsoft YaHei",sans-serif}
+  a{color:var(--acc);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:72px 0}
+  h1,h2,h3{margin:0;line-height:1.25}
+  h2{font-size:30px;letter-spacing:.3px}
+  .kicker{color:var(--acc);font-size:13px;letter-spacing:2.5px;margin-bottom:10px;text-transform:uppercase}
+  .dim{color:var(--dim)}
+  .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:700;
+       border:1px solid var(--line);color:var(--text)}
+  .btn:hover{border-color:var(--faint)}
+  .btn.primary{background:var(--acc);color:#1a1409;border-color:var(--acc)}
+  .btn.primary:hover{background:#e8bd85}
+  nav{position:sticky;top:0;z-index:20;background:rgba(15,17,21,.85);
+      border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+  nav .wrap{display:flex;align-items:center;gap:12px;height:62px}
+  nav img{width:26px;height:26px}
+  nav .links{margin-left:auto;display:flex;gap:22px;align-items:center}
+  nav .links a{color:var(--dim);font-size:14px}
+  .hero{padding:90px 0 40px}
+  .hero h1{font-size:46px;letter-spacing:.5px}
+  .hero .lead{font-size:18px;color:var(--dim);margin:18px 0 26px;max-width:640px}
+  .hero .meta{color:var(--faint);font-size:13px;margin-top:14px}
+  .shot{width:100%;border-radius:14px;border:1px solid var(--line);margin-top:40px;
+        display:block;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+  .grid{display:grid;gap:20px}
+  .g5{grid-template-columns:repeat(5,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{font-size:15px;margin-bottom:8px}
+  .card p{margin:0;color:var(--dim);font-size:14px}
+  .num{color:var(--acc);font:700 12px/1 ui-monospace,Consolas,monospace;letter-spacing:2px;margin-right:8px}
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .plan{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+        padding:26px;display:flex;flex-direction:column;gap:10px}
+  .plan.hot{border-color:var(--acc);background:linear-gradient(180deg,#1d1a13,#161920)}
+  .plan .name{color:var(--dim);font-size:13px;letter-spacing:1px}
+  .plan .amount{font-size:38px;font-weight:700}
+  .plan .amount small{font-size:14px;color:var(--dim);font-weight:400;margin-left:6px}
+  .plan ul{margin:6px 0 0;padding-left:18px;color:var(--dim);font-size:14px}
+  .plan .btn{margin-top:auto;text-align:center}
+  .thumb{width:100%;height:280px;object-fit:cover;object-position:top;display:block}
+  .video-box video{width:100%;border-radius:14px;border:1px solid var(--line);display:block}
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--faint);font-size:13px}
+  footer .wrap{display:flex;gap:16px;flex-wrap:wrap}
+  @media(max-width:900px){.g5,.g3,.price{grid-template-columns:1fr}
+    .hero h1{font-size:34px} nav .links a:not(.btn){display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <img src="../img/logo.png" alt="NovelForge">
+    <b>NovelForge</b>
+    <div class="links">
+      <a href="#what">Features</a>
+      <a href="#vn">Visual novel</a>
+      <a href="#pricing">Pricing</a>
+      <a class="btn" id="dl-top" href="#download">Download</a>
+      <a class="btn primary" id="buy-top" href="#pricing">Buy</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Local-first writing studio</div>
+    <h1>Turn your novel into<br>something playable.</h1>
+    <p class="lead">
+      Write your book, catch continuity errors inline, then generate a playable
+      visual novel from the same text. Your manuscript stays on your machine.
+      Writing is free forever.
+    </p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn primary" id="dl" href="#download">Download for Windows</a>
+      <a class="btn" href="#vn">See what it generates</a>
+    </div>
+    <div class="meta">Windows 10/11 · ~184 MB installer · 14-day trial · 30 free image credits</div>
+    <img class="shot" src="../img/editor.png" alt="NovelForge editor">
+    <p class="dim" style="font-size:12.5px;margin-top:10px">
+      Screenshots show the current UI (Chinese). An English interface is planned;
+      the workflow is identical.
+    </p>
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <div class="kicker">What it does</div>
+    <h2>Five steps, one finished book</h2>
+    <div class="grid g5" style="margin-top:28px">
+      <div class="card"><h3><span class="num">01</span>Write</h3><p>You outline, the model drafts. It never writes behind your back.</p></div>
+      <div class="card"><h3><span class="num">02</span>Check</h3><p>Inline continuity warnings: wounds, hair colour, repeated lines.</p></div>
+      <div class="card"><h3><span class="num">03</span>Convert</h3><p>Script, sprites, backgrounds, and a playable web build.</p></div>
+      <div class="card"><h3><span class="num">04</span>Back up</h3><p>Every save goes to multiple targets you choose.</p></div>
+      <div class="card"><h3><span class="num">05</span>Export</h3><p>EPUB, submission pack, mobile reader, Ren'Py project.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="vn" style="background:var(--panel2)">
+  <div class="wrap">
+    <div class="kicker">Visual novel</div>
+    <h2>One click: prose becomes a playable scene</h2>
+    <p class="dim" style="max-width:640px;margin-top:12px">
+      NovelForge converts your chapters into a script, fills in missing sprites and
+      backgrounds, and exports a self-contained web build you can share as a link.
+      You can also export a Ren'Py project and keep editing.
+    </p>
+    <div class="grid g3" style="margin-top:28px">
+      <div class="card" style="padding:0;overflow:hidden">
+        <img class="thumb" src="../img/editor.png" alt="Demo project">
+        <div style="padding:16px 18px"><h3>Sample project included</h3>
+        <p>Open it and generate a visual novel in about a minute.</p></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <img class="thumb" src="../img/reader.png" alt="Mobile reader">
+        <div style="padding:16px 18px"><h3>Mobile reader + annotations</h3>
+        <p>Send to beta readers; they leave paragraph notes and return JSON.</p></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <img class="thumb" src="../img/security.png" alt="Safety center">
+        <div style="padding:16px 18px"><h3>Safety center</h3>
+        <p>Multi-target backups, restore, auditable AI call log.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="video-box">
+  <div class="wrap">
+    <div class="kicker">20-second demo</div>
+    <h2>Write a chapter → generate → play it</h2>
+    <div style="margin-top:24px">
+      <video controls playsinline preload="metadata" poster="../img/editor.png">
+        <source src="../video/demo.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="background:var(--panel2)">
+  <div class="wrap">
+    <div class="kicker">Pricing</div>
+    <h2>Writing is free. You pay for AI images and unwatermarked export.</h2>
+    <div class="price" style="margin-top:28px">
+      <div class="plan">
+        <div class="name">Free</div>
+        <div class="amount">$0</div>
+        <ul>
+          <li>Writing, outline, audit, versions</li>
+          <li>Backups and restore</li>
+          <li>EPUB / submission pack / reader</li>
+          <li>Template-mode visual novel</li>
+          <li>30 image credits on signup</li>
+        </ul>
+        <a class="btn" id="dl-free" href="#download">Download</a>
+      </div>
+      <div class="plan hot">
+        <div class="name">Lifetime · early bird (100 left)</div>
+        <div class="amount">$29<small>one-time</small></div>
+        <ul>
+          <li>Everything in Free, plus:</li>
+          <li>Unwatermarked visual novel export</li>
+          <li>Bring your own API key</li>
+          <li>Updates within the same major version</li>
+        </ul>
+        <a class="btn primary" id="buy-299" href="#buy">Buy lifetime</a>
+      </div>
+      <div class="plan">
+        <div class="name">Lifetime · regular / bundle</div>
+        <div class="amount">$39<small>one-time</small></div>
+        <ul>
+          <li>Regular lifetime license</li>
+          <li>Or: lifetime + 300 credits</li>
+          <li>Credits never expire</li>
+        </ul>
+        <a class="btn" id="buy-199" href="#buy">Buy now</a>
+      </div>
+    </div>
+    <p class="dim" style="margin-top:16px;font-size:13.5px">
+      AI images use credits: 1 credit = 1 image. Packs: $4 / 150 credits, $6 / 300 credits.
+      Template mode does not consume credits.
+    </p>
+  </div>
+</section>
+
+<section id="buy">
+  <div class="wrap">
+    <div class="kicker">How to buy</div>
+    <h2>Four steps, usually under 10 minutes</h2>
+    <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:28px">
+      <div class="card"><h3>1. Download</h3><p>Free 14-day trial, no payment needed.</p></div>
+      <div class="card"><h3>2. Buy</h3><p>Secure checkout by Creem. Card, Apple Pay, Google Pay.</p></div>
+      <div class="card"><h3>3. Get your license key</h3><p>Shown after payment and emailed to you.</p></div>
+      <div class="card"><h3>4. Activate</h3><p>Paste the key in the app: Structure → Activate / License.</p></div>
+    </div>
+    <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn primary" id="dl-bottom" href="#download">Start free trial</a>
+      <a class="btn" id="shop" href="#buy">Open checkout</a>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--panel2)">
+  <div class="wrap">
+    <div class="kicker">FAQ</div>
+    <h2>Questions people ask</h2>
+    <div style="margin-top:24px">
+      <details open><summary>Is my manuscript uploaded anywhere?</summary>
+        <p>No. Files stay on your machine. Content is only sent when you explicitly run an AI action,
+        and you can set AI permissions to “never use cloud”, or enable redaction (names replaced with tokens).</p></details>
+      <details><summary>Do I need an NVIDIA GPU?</summary>
+        <p>No. Writing, auditing and export all work without one. The visual novel has a template mode
+        that generates art locally without any model. Local AI art requires ComfyUI; cloud AI just needs an API key.</p></details>
+      <details><summary>Do AI images cost extra?</summary>
+        <p>Yes: 1 credit per image. Packs are $4/150 and $6/300. You can also bring your own API key and pay the provider directly. Template mode is free.</p></details>
+      <details><summary>Can I use it on a second computer?</summary>
+        <p>One license covers one machine while activated. Contact us to transfer your license.</p></details>
+      <details><summary>Why does Windows warn about an unknown publisher?</summary>
+        <p>The installer is not code-signed yet. Click “More info → Run anyway”. We are working on signing.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer id="download">
+  <div class="wrap">
+    <span>© 2026 NovelForge</span>
+    <a id="dl-foot" href="#download">Download for Windows</a>
+    <a href="../licenses/terms.html">Terms</a>
+    <a href="../licenses/privacy.html">Privacy</a>
+    <span style="margin-left:auto">Turn your novel into something playable.</span>
+  </div>
+</footer>
+
+<script>
+// Fill these in after creating products on Creem.
+const LINKS = {
+  download: "https://github.com/jeans912/novel-forge-site/releases/download/v2.40/NovelForge-2.40-setup.exe",
+  checkoutLifetime: "",     // Creem checkout link for lifetime ($29 or $39)
+  checkoutCredits: "",      // Creem checkout link for credits
+  terms: "../licenses/terms.html",
+  privacy: "../licenses/privacy.html"
+};
+const set = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
+["dl","dl-top","dl-free","dl-bottom","dl-foot"].forEach(id => set(id, LINKS.download));
+set("buy-top", LINKS.checkoutLifetime);
+set("buy-299", LINKS.checkoutLifetime);
+set("buy-199", LINKS.checkoutLifetime);
+set("shop", LINKS.checkoutLifetime);
+</script>
+</body>
+</html>
