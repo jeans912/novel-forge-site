@@ -241,8 +241,8 @@
   <div class="wrap">
     <span>© 2026 NovelForge</span>
     <a id="dl-foot" href="#download">Download for Windows</a>
-    <a href="../licenses/terms.html">Terms</a>
-    <a href="../licenses/privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
     <span style="margin-left:auto">Turn your novel into something playable.</span>
   </div>
 </footer>
@@ -253,8 +253,8 @@ const LINKS = {
   download: "https://github.com/jeans912/novel-forge-site/releases/download/v2.40/NovelForge-2.40-setup.exe",
   checkoutLifetime: "",     // Creem checkout link for lifetime ($29 or $39)
   checkoutCredits: "",      // Creem checkout link for credits
-  terms: "../licenses/terms.html",
-  privacy: "../licenses/privacy.html"
+  terms: "terms.html",
+  privacy: "privacy.html"
 };
 const set = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
 ["dl","dl-top","dl-free","dl-bottom","dl-foot"].forEach(id => set(id, LINKS.download));
