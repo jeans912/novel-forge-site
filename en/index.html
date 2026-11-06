@@ -243,12 +243,14 @@
     <a id="dl-foot" href="#download">Download for Windows</a>
     <a href="terms.html">Terms</a>
     <a href="privacy.html">Privacy</a>
+    <a id="support" href="#" style="display:none">Support on Afdian →</a>
     <span style="margin-left:auto">Turn your novel into something playable.</span>
   </div>
 </footer>
 
 <script>
 // Fill these in after creating products on Creem.
+const AFDIAN_URL = "https://ifdian.net/a/jzy0454";
 const LINKS = {
   download: "https://github.com/jeans912/novel-forge-site/releases/download/v2.40/NovelForge-2.40-setup.exe",
   checkoutLifetime: "",     // Creem checkout link for lifetime ($29 or $39)
@@ -262,6 +264,8 @@ set("buy-top", LINKS.checkoutLifetime);
 set("buy-299", LINKS.checkoutLifetime);
 set("buy-199", LINKS.checkoutLifetime);
 set("shop", LINKS.checkoutLifetime);
+const sup = document.getElementById("support");
+if (sup && AFDIAN_URL) { sup.href = AFDIAN_URL; sup.style.display = "inline"; }
 </script>
 </body>
 </html>
