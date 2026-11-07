@@ -322,6 +322,20 @@
   </div>
 </section>
 
+<section id="install-tip">
+  <div class="wrap">
+    <div class="card" style="max-width:820px;margin:0 auto">
+      <h3>安装提示</h3>
+      <ul style="color:#9d9484;line-height:1.9">
+        <li>安装包 <b>暂无代码签名</b>，Windows 可能提示「未知发布者」：点「更多信息 → 仍要运行」即可。</li>
+        <li>SHA256：<code>022F0EB22D8AF4CC12F02B91223598730FE7A468B32CA4224579646862A20EC4</code></li>
+        <li>安装后自动获得 <b>14 天全功能试用</b>，无需激活。</li>
+        <li>国内下载慢时，可等镜像上线后从「立即购买 / 下载」重新进入。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <footer id="download">
   <div class="wrap">
     <span>© 2026 小说工坊 NovelForge</span>
@@ -338,11 +352,13 @@
 <script>
 // TODO：把这几个链接换成你的真实地址
 const AFDIAN_URL = "https://ifdian.net/a/jzy0454";
+// TODO: 微店上架后把 buy199 / buy299 换成微店商品链接
+const AFDIAN = "https://ifdian.net/a/jzy0454";
 const LINKS = {
-  download: "https://github.com/jeans912/novel-forge-site/releases/download/v2.43/NovelForge-2.43-setup.exe",
-  shop: "",
-  buy199: "",
-  buy299: "",
+  download: "https://github.com/jeans912/novel-forge-site/releases/download/v2.44/NovelForge-2.44-setup.exe",
+  shop: AFDIAN,
+  buy199: AFDIAN,
+  buy299: AFDIAN,
   terms: "licenses/terms.html",
   privacy: "licenses/privacy.html",
 };
