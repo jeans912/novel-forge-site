@@ -1,8 +1,9 @@
 {
-  "download": "https://github.com/jeans912/novel-forge-site/releases/download/v2.40/NovelForge-2.40-setup.exe",
-  "shop": "",
-  "buy199": "",
-  "buy299": "",
+  "download": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.44-setup.exe",
+  "shop": "https://ifdian.net/a/jzy0454",
+  "buy199": "https://ifdian.net/a/jzy0454",
+  "buy299": "https://ifdian.net/a/jzy0454",
   "terms": "licenses/terms.html",
-  "privacy": "licenses/privacy.html"
+  "privacy": "licenses/privacy.html",
+  "download_backup": "https://github.com/jeans912/novel-forge-site/releases/download/v2.44/NovelForge-2.44-setup.exe"
 }
