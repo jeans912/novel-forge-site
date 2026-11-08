@@ -144,13 +144,13 @@
     <p class="lead">
       写小说、查设定冲突、一键生成可玩的视觉小说。
       稿子存在你自己的电脑上；AI 只在你按按钮时工作。
-      写作永久免费。
+      写作永久免费，<b>文本 AI 也不扣点</b>。
     </p>
     <div class="cta">
       <a class="btn primary" href="#download" id="dl">下载 Windows 版</a>
       <a class="btn" href="#vn">看它能生成什么</a>
     </div>
-    <div class="meta">Windows 10/11 · 安装包约 182 MB · 免费试用 14 天，送 30 张图</div>
+    <div class="meta">Windows 10/11 · 安装包约 175 MB · 免费试用 14 天 · 文本 AI 免费额度 200 次/天</div>
     <img class="shot" src="img/editor.png" alt="写作界面">
   </div>
 </header>
@@ -224,6 +224,33 @@
   </div>
 </section>
 
+<section style="background:var(--panel2)">
+  <div class="wrap">
+    <div class="kicker">2.49 新增</div>
+    <h2>AI 免费了，更新自动了，Key 更安全了</h2>
+    <p style="margin-top:12px;color:#9d9484">
+      灵感、章纲、润色、设定生成走免费模型，不扣点数；软件会自动更新；你自己的 API Key 加密存在本机。
+    </p>
+    <div class="grid g3" style="margin-top:28px">
+      <div class="card" style="padding:0;overflow:hidden">
+        <img class="thumb" src="img/inspiration.png" alt="灵感生成器">
+        <div style="padding:16px 18px"><h3>文本 AI 免费，不扣点</h3>
+        <p>24 个生成器：取名、世界观、境界、对话、伏笔、开头三版……每天 200 次免费额度。</p></div>
+      </div>
+      <div class="card">
+        <h3>自动更新</h3>
+        <p>装一次 2.49，之后的版本会自动检查、下载、校验 SHA256 并静默安装。
+        也可以从「开始 ▾ → 检查更新」手动触发。</p>
+      </div>
+      <div class="card">
+        <h3>Key 加密 + 试用防重置</h3>
+        <p>你的 API Key 用 Windows DPAPI 加密存储，拷到别的电脑也读不出来；
+        试用期不再能靠删文件重置。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="kicker">20 秒演示</div>
@@ -251,6 +278,7 @@
           <li>备份 / 多目标恢复</li>
           <li>EPUB / 投稿包 / 阅读版</li>
           <li>模板模式生成视觉小说</li>
+          <li>文本 AI 免费 200 次/天</li>
           <li>送 30 张图（一次性）</li>
         </ul>
         <a class="btn" href="#download" id="dl-free">下载</a>
@@ -312,10 +340,13 @@
         <p>能。写作、审计、导出全部可用；视觉小说有「模板模式」，用内置素材直接出片。
         想要 AI 生图可以接本机 ComfyUI，或填云端 API Key。</p></details>
       <details><summary>AI 生成要额外花钱吗？</summary>
-        <p>要。1 张图 = 1 点，点数包 ¥29 / 150 张、¥45 / 300 张；也可以用自己的 API Key，成本自付。
-        模板模式不扣点。</p></details>
+        <p>文字 AI（灵感/章纲/润色/设定）不扣点，每天 200 次免费额度；只有生图按张计点：1 张图 = 1 点，点数包 ¥29 / 150 张、¥45 / 300 张。也可以填自己的 API Key，成本自付；模板模式不扣点。</p></details>
       <details><summary>换电脑怎么办？</summary>
         <p>激活码绑定机器。换机时联系作者迁移（需提供旧机器码与新机器码）。</p></details>
+      <details><summary>以后怎么更新？</summary>
+        <p>2.49 起支持自动更新：启动后会自动检查新版本，点「立即更新」即可。
+        下载完会校验 SHA256，然后静默安装并重启。装过 2.46 / 2.47 的用户，
+        需要手动装一次 2.49，之后就能自动更新。</p></details>
       <details><summary>为什么 Windows 提示"未知发布者"？</summary>
         <p>安装包暂未做代码签名。可以点「更多信息 → 仍要运行」；我们正在处理证书。</p></details>
     </div>
@@ -330,6 +361,7 @@
         <li>安装包 <b>暂无代码签名</b>，Windows 可能提示「未知发布者」：点「更多信息 → 仍要运行」即可。</li>
         <li>SHA256：<code>109FAE285BA62D4FA3D85136DEA67B9059591426A3401F8AEF09BD8B2EB63BBF</code></li>
         <li>安装后自动获得 <b>14 天全功能试用</b>，无需激活。</li>
+        <li>本版起支持<b>自动更新</b>；装过 2.46 / 2.47 的用户需手动装一次本版。</li>
         <li>国内下载慢可换备用链接：<a href="https://github.com/jeans912/novel-forge-site/releases/download/v2.49/NovelForge-2.49-setup.exe">GitHub（海外）</a></li>
       </ul>
     </div>
