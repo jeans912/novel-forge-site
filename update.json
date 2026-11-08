@@ -1,8 +1,8 @@
 {
-  "version": "2.48.0.0",
-  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.48-setup.exe",
-  "sha256": "0FF4683A4A6DEC4BF3284034A7A7ADC9F2F3C1FB374350B1F2A15BF85BC2C329",
-  "notes": "1. 新增应用内自动更新：开始 ▾ → 检查更新…，启动时也会静默检查\n2. 下载安装包后自动校验 SHA256，静默安装并重启\n3. 其余沿用 2.47：试用防重置、HTTPS 免费模型、灵感 24 个\n",
+  "version": "2.49.0.0",
+  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.49-setup.exe",
+  "sha256": "109FAE285BA62D4FA3D85136DEA67B9059591426A3401F8AEF09BD8B2EB63BBF",
+  "notes": "1. 用户 API Key 改为 Windows DPAPI 加密存储（换机需重填）\n2. 其余沿用 2.48：自动更新、试用防重置、HTTPS 免费模型\n",
   "released": "2026-11-08",
   "min_version": "2.0.0"
 }
