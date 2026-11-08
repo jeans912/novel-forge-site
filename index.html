@@ -148,6 +148,7 @@
     </p>
     <div class="cta">
       <a class="btn primary" href="#download" id="dl">下载 Windows 版</a>
+      <a class="btn" href="#download" id="dl-zip">下载 ZIP（浏览器拦截时）</a>
       <a class="btn" href="#vn">看它能生成什么</a>
     </div>
     <div class="meta">Windows 10/11 · 安装包约 175 MB · 免费试用 14 天 · 文本 AI 免费额度 200 次/天</div>
@@ -359,10 +360,11 @@
       <h3>安装提示</h3>
       <ul style="color:#9d9484;line-height:1.9">
         <li>安装包 <b>暂无代码签名</b>，Windows 可能提示「未知发布者」：点「更多信息 → 仍要运行」即可。</li>
-        <li>SHA256：<code>109FAE285BA62D4FA3D85136DEA67B9059591426A3401F8AEF09BD8B2EB63BBF</code></li>
+        <li>SHA256：<code>8450693F1A205111F270BDBF91F19CABC59CB6CD795A50A95E1F528024848B88</code></li>
         <li>安装后自动获得 <b>14 天全功能试用</b>，无需激活。</li>
+        <li>若浏览器/Windows 拦截下载：点「保留」即可，或改用 <a href="https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.50-setup.zip">ZIP 压缩包</a>（解压后运行安装程序）。</li>
         <li>本版起支持<b>自动更新</b>；装过 2.46 / 2.47 的用户需手动装一次本版。</li>
-        <li>国内下载慢可换备用链接：<a href="https://github.com/jeans912/novel-forge-site/releases/download/v2.49/NovelForge-2.49-setup.exe">GitHub（海外）</a></li>
+        <li>国内下载慢可换备用链接：<a href="https://github.com/jeans912/novel-forge-site/releases/download/v2.50/NovelForge-2.50-setup.exe">GitHub（海外）</a></li>
       </ul>
     </div>
   </div>
@@ -387,7 +389,8 @@ const AFDIAN_URL = "https://ifdian.net/a/jzy0454";
 // TODO: 微店上架后把 buy199 / buy299 换成微店商品链接
 const AFDIAN = "https://ifdian.net/a/jzy0454";
 const LINKS = {
-  download: "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.49-setup.exe",
+  download: "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.50-setup.exe",
+  download_zip: "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.50-setup.zip",
   shop: AFDIAN,
   buy199: AFDIAN,
   buy299: AFDIAN,
@@ -397,6 +400,7 @@ const LINKS = {
 const set = (id, url) => { const el = document.getElementById(id); if (el) el.href = url; };
 set("dl", LINKS.download); set("dl-top", LINKS.download);
 set("dl-free", LINKS.download); set("dl-foot", LINKS.download);
+set("dl-zip", LINKS.download_zip);
 set("buy-cta", LINKS.download);
 set("shop", LINKS.shop); set("buy-199", LINKS.buy199); set("buy-299", LINKS.buy299);
 set("tok", LINKS.terms); set("priv", LINKS.privacy);
