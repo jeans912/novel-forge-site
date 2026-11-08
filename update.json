@@ -1,8 +1,8 @@
 {
-  "version": "2.50.0.0",
+  "version": "2.52.0.0",
   "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-setup.exe",
-  "sha256": "8450693F1A205111F270BDBF91F19CABC59CB6CD795A50A95E1F528024848B88",
-  "notes": "1. 安装程序界面重做：简体中文向导、品牌图、自定义欢迎与完成页\n2. 开始菜单新增「检查更新」\n3. 新增 ZIP 备用下载（规避浏览器对 exe 的拦截）\n4. 其余沿用 2.49：API Key 加密、自动更新、试用防重置\n\n（下载地址改为固定链接，便于信誉累积）",
+  "sha256": "FE57294E937AE14884B8DC912F03E37BBEF2CD9AD74C9723F3B1B2B19A658EDD",
+  "notes": "1. 去 AI 味：扫描 26 类机器腔 + 轻度/重写两档改写\n2. 伏笔图：埋设→回收时间线，超期标红，可从章纲导入\n3. 章纲新增「节拍」，主线矛盾可 ✨ 生成\n4. Markdown 工程导入导出（Obsidian 可改）\n5. AI 助手：按指令改项目，先预览后应用，可撤销\n",
   "released": "2026-11-08",
   "min_version": "2.0.0",
   "url_zip": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-setup.zip"
