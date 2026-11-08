@@ -144,14 +144,14 @@
     <p class="lead">
       写小说、查设定冲突、一键生成可玩的视觉小说。
       稿子存在你自己的电脑上；AI 只在你按按钮时工作。
-      写作永久免费，<b>文本 AI 也不扣点</b>。
+      <b>写作、章纲、视觉小说全部免费</b>；多线 Galgame 制作版单独买断。
     </p>
     <div class="cta">
       <a class="btn primary" href="#download" id="dl">下载 Windows 版（ZIP）</a>
       <a class="btn" href="#download" id="dl-zip">直接下载安装包</a>
       <a class="btn" href="#vn">看它能生成什么</a>
     </div>
-    <div class="meta">Windows 10/11 · 安装包约 175 MB · 免费试用 14 天 · 文本 AI 免费额度 200 次/天</div>
+    <div class="meta">Windows 10/11 · 安装包约 175 MB · 基础功能永久免费 · AI 用你自己的 API Key</div>
     <img class="shot" src="img/editor.png" alt="写作界面">
   </div>
 </header>
@@ -294,46 +294,57 @@
 <section id="price" style="background:var(--panel2)">
   <div class="wrap">
     <div class="kicker">价格</div>
-    <h2>写作永远免费，只有 AI 生成与去水印导出收费</h2>
-    <div class="price" style="margin-top:28px">
+    <h2>写作与视觉小说免费，Galgame 制作版买断</h2>
+    <div class="price" style="margin-top:28px;grid-template-columns:repeat(2,1fr)">
       <div class="plan">
-        <div class="name">免费</div>
+        <div class="name">免费版</div>
         <div class="amount">¥0</div>
         <ul>
-          <li>写作 / 大纲 / 审计 / 版本</li>
-          <li>备份 / 多目标恢复</li>
-          <li>EPUB / 投稿包 / 阅读版</li>
-          <li>模板模式生成视觉小说</li>
-          <li>文本 AI 免费 200 次/天</li>
-          <li>送 30 张图（一次性）</li>
+          <li>写作 / 大纲 / 章纲 / 节拍</li>
+          <li>一致性检查 / 审计 / 伏笔图</li>
+          <li>灵感生成器 / 去 AI 味 / AI 助手</li>
+          <li>一键生成视觉小说（网页版 / Ren'Py，无水印）</li>
+          <li>EPUB / 投稿包 / 手机阅读版</li>
+          <li>API Key 加密存储</li>
         </ul>
-        <a class="btn" href="#download" id="dl-free">下载</a>
+        <a class="btn" href="#download" id="dl-free">免费下载</a>
       </div>
       <div class="plan hot">
-        <div class="name">早鸟终身 · 限 100 份</div>
-        <div class="amount">¥199<small>一次性</small></div>
+        <div class="name">Galgame 制作版 · 买断</div>
+        <div class="amount">¥149<small>一次性</small></div>
         <ul>
-          <li>上面全部 +</li>
-          <li>视觉小说导出无水印</li>
-          <li>可填写自己的 API Key</li>
-          <li>永久更新（同大版本）</li>
+          <li>免费版全部功能 +</li>
+          <li><b>多线分支图编辑器</b></li>
+          <li><b>好感度 / 数值 / 条件分支</b></li>
+          <li><b>多结局 + 结局图鉴、CG 图鉴</b></li>
+          <li><b>导出可商用的 Ren'Py Galgame 工程</b></li>
+          <li>结构校验 / 结局模拟 / 分支图 PNG</li>
+          <li>永久使用，小版本免费更新</li>
         </ul>
-        <a class="btn primary" href="#buy" id="buy-199">立即购买</a>
-      </div>
-      <div class="plan">
-        <div class="name">正式 / 组合</div>
-        <div class="amount">¥299<small>一次性</small></div>
-        <ul>
-          <li>正式终身授权</li>
-          <li>或：终身 + 300 张点数</li>
-          <li>点数永不过期</li>
-        </ul>
-        <a class="btn" href="#buy" id="buy-299">立即购买</a>
+        <a class="btn primary" href="#buy" id="buy-199">解锁 Galgame 版</a>
       </div>
     </div>
     <p class="sub" style="margin-top:16px;font-size:13.5px">
-      AI 生图按张计点：1 点 = 1 张。点数包 ¥29 / 150 张、¥45 / 300 张；模板模式不扣点。<br>线上支付暂未开通，可先免费试用；购买请通过作者联系方式。
+      AI 消耗由你自己的 API Key 承担（DeepSeek、智谱、硅基流动或本地 ComfyUI 均可），软件不收点数。
+      早鸟价 <b>¥99</b>（限 100 份），正价 <b>¥149</b>；团队/商用授权另议。
     </p>
+  </div>
+</section>
+
+<section id="buy">
+  <div class="wrap">
+    <div class="kicker">怎么买</div>
+    <h2>四步，通常 10 分钟内能用上</h2>
+    <div class="steps" style="margin-top:28px">
+      <div class="step"><h3>下载安装</h3><p>免费版功能不需要付款，装完即用。</p></div>
+      <div class="step"><h3>复制机器码</h3><p>软件里「激活 / 授权」→ 复制机器码。</p></div>
+      <div class="step"><h3>付款</h3><p>拍下 Galgame 制作版，备注机器码。</p></div>
+      <div class="step"><h3>粘贴激活</h3><p>收到激活码后粘贴，即刻解锁 Galgame 导出。</p></div>
+    </div>
+    <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn primary" href="#download" id="buy-cta">先免费下载</a>
+      <a class="btn" href="#" id="shop">打开购买页</a>
+    </div>
   </div>
 </section>
 
@@ -366,7 +377,7 @@
         <p>能。写作、审计、导出全部可用；视觉小说有「模板模式」，用内置素材直接出片。
         想要 AI 生图可以接本机 ComfyUI，或填云端 API Key。</p></details>
       <details><summary>AI 生成要额外花钱吗？</summary>
-        <p>文字 AI（灵感/章纲/润色/设定）不扣点，每天 200 次免费额度；只有生图按张计点：1 张图 = 1 点，点数包 ¥29 / 150 张、¥45 / 300 张。也可以填自己的 API Key，成本自付；模板模式不扣点。</p></details>
+        <p>不用。写作与视觉小说功能免费，AI 用你自己的 Key，成本按服务商计费。</p></details>
       <details><summary>换电脑怎么办？</summary>
         <p>激活码绑定机器。换机时联系作者迁移（需提供旧机器码与新机器码）。</p></details>
       <details><summary>以后怎么更新？</summary>
@@ -386,7 +397,7 @@
       <ul style="color:#9d9484;line-height:1.9">
         <li>安装包 <b>暂无代码签名</b>，Windows 可能提示「未知发布者」：点「更多信息 → 仍要运行」即可。</li>
         <li>SHA256：<code>FE57294E937AE14884B8DC912F03E37BBEF2CD9AD74C9723F3B1B2B19A658EDD</code></li>
-        <li>安装后自动获得 <b>14 天全功能试用</b>，无需激活。</li>
+        <li>安装后基础功能直接可用，无需激活；Galgame 导出需买断。</li>
         <li>推荐下载 <b>ZIP</b>（浏览器不会弹「不常下载」）；解压后运行安装程序即可。<a href="https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-setup.exe">直接下载 exe</a> 可能被浏览器提示，点「保留」继续。</li>
         <li>本版起支持<b>自动更新</b>；装过 2.46 / 2.47 的用户需手动装一次本版。</li>
         <li>国内下载慢可换备用链接：<a href="https://github.com/jeans912/novel-forge-site/releases/download/v2.50/NovelForge-2.50-setup.exe">GitHub（海外）</a></li>
