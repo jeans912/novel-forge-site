@@ -1,9 +1,8 @@
 {
-  "version": "2.52.0.0",
-  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-setup.exe",
-  "sha256": "FE57294E937AE14884B8DC912F03E37BBEF2CD9AD74C9723F3B1B2B19A658EDD",
-  "notes": "1. 去 AI 味：扫描 26 类机器腔 + 轻度/重写两档改写\n2. 伏笔图：埋设→回收时间线，超期标红，可从章纲导入\n3. 章纲新增「节拍」，主线矛盾可 ✨ 生成\n4. Markdown 工程导入导出（Obsidian 可改）\n5. AI 助手：按指令改项目，先预览后应用，可撤销\n",
+  "version": "2.53",
+  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.53-setup.exe",
+  "sha256": "7a600dc9faa45e23fb97a5dba7cc0968a1fcff6e4dcf87cdd05a42d5c4041755",
+  "notes": "﻿2.53：写作与视觉小说全部免费（AI 用自己的 Key，停用点数）；Galgame 制作版独立工作台（分支图/好感事件/多结局/结局模拟/CG 图鉴/可商用 Ren'Py 导出）；素材图与素材面板同步修复；导出字体改为 Noto Sans SC。\n",
   "released": "2026-11-08",
-  "min_version": "2.0.0",
-  "url_zip": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-setup.zip"
+  "min_version": "2.0.0"
 }
