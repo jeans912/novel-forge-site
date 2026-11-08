@@ -1,302 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NovelForge · Turn your novel into something playable</title>
-<meta name="description" content="A local-first Windows writing studio: write novels, catch continuity errors, and turn your book into a playable visual novel.">
 <style>
-  :root{--bg:#0f1115;--panel:#161920;--panel2:#1b1f27;--line:#262b34;
-        --text:#EDE6D6;--dim:#8A9099;--faint:#5f6672;--acc:#E0B070}
+  :root{
+    --bg:#101216; --panel:#161920; --panel2:#12151b; --line:#262b33;
+    --text:#e8e4dc; --dim:#9d9484; --faint:#6f675a;
+    --accent:#e0b070; --accent2:#c08a4e; --radius:14px;
+  }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--text);
-       font:16px/1.7 -apple-system,"Segoe UI",Inter,"Microsoft YaHei",sans-serif}
-  a{color:var(--acc);text-decoration:none}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-  section{padding:72px 0}
-  h1,h2,h3{margin:0;line-height:1.25}
-  h2{font-size:30px;letter-spacing:.3px}
-  .kicker{color:var(--acc);font-size:13px;letter-spacing:2.5px;margin-bottom:10px;text-transform:uppercase}
-  .dim{color:var(--dim)}
-  .btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:700;
-       border:1px solid var(--line);color:var(--text)}
-  .btn:hover{border-color:var(--faint)}
-  .btn.primary{background:var(--acc);color:#1a1409;border-color:var(--acc)}
-  .btn.primary:hover{background:#e8bd85}
-  nav{position:sticky;top:0;z-index:20;background:rgba(15,17,21,.85);
-      border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
-  nav .wrap{display:flex;align-items:center;gap:12px;height:62px}
-  nav img{width:26px;height:26px}
-  nav .links{margin-left:auto;display:flex;gap:22px;align-items:center}
-  nav .links a{color:var(--dim);font-size:14px}
-  .hero{padding:90px 0 40px}
-  .hero h1{font-size:46px;letter-spacing:.5px}
-  .hero .lead{font-size:18px;color:var(--dim);margin:18px 0 26px;max-width:640px}
-  .hero .meta{color:var(--faint);font-size:13px;margin-top:14px}
-  .shot{width:100%;border-radius:14px;border:1px solid var(--line);margin-top:40px;
-        display:block;box-shadow:0 24px 60px rgba(0,0,0,.45)}
-  .grid{display:grid;gap:20px}
-  .g5{grid-template-columns:repeat(5,1fr)}
+       font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+       line-height:1.7}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  nav{border-bottom:1px solid var(--line);position:sticky;top:0;
+      background:rgba(16,18,22,.92);backdrop-filter:blur(8px);z-index:10}
+  nav .wrap{display:flex;align-items:center;gap:18px;height:60px}
+  nav img{height:26px}
+  nav b{font-size:15px}
+  nav .links{margin-left:auto;display:flex;gap:16px;align-items:center;font-size:14px;color:var(--dim)}
+  .btn{display:inline-block;border:1px solid var(--line);background:#232830;
+       color:var(--text);padding:9px 16px;border-radius:10px;font-size:14px}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#1a1408;font-weight:700}
+  header.hero{padding:64px 0 34px;text-align:center}
+  header.hero h1{font-size:42px;margin:12px 0 14px;line-height:1.25}
+  header.hero p{color:var(--dim);max-width:660px;margin:0 auto}
+  .kicker{color:var(--faint);font-size:12px;letter-spacing:2px}
+  .cta{margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .meta{color:var(--faint);font-size:13px;margin-top:12px}
+  img.shot{width:100%;border:1px solid var(--line);border-radius:14px;margin-top:30px}
+  section{padding:44px 0;border-top:1px solid var(--line)}
+  section.alt{background:var(--panel2)}
+  h2{font-size:26px;margin:0 0 10px}
+  .sub{color:var(--dim)}
+  .grid{display:grid;gap:18px;margin-top:24px}
   .g3{grid-template-columns:repeat(3,1fr)}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
-  .card h3{font-size:15px;margin-bottom:8px}
-  .card p{margin:0;color:var(--dim);font-size:14px}
-  .num{color:var(--acc);font:700 12px/1 ui-monospace,Consolas,monospace;letter-spacing:2px;margin-right:8px}
-  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .plan{background:var(--panel);border:1px solid var(--line);border-radius:14px;
-        padding:26px;display:flex;flex-direction:column;gap:10px}
-  .plan.hot{border-color:var(--acc);background:linear-gradient(180deg,#1d1a13,#161920)}
+  .g5{grid-template-columns:repeat(5,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .card h3{font-size:15px;margin:0 0 6px}
+  .card p{margin:0;color:var(--dim);font-size:13.5px}
+  .card img{width:100%;border-radius:10px;margin-bottom:10px;display:block}
+  .num{color:var(--accent);font:700 12px/1 Consolas,monospace;margin-right:6px}
+  .price{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+  .plan{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+        padding:22px;display:flex;flex-direction:column;gap:8px}
+  .plan.hot{border-color:var(--accent);background:linear-gradient(180deg,#1d1a13,#161920)}
   .plan .name{color:var(--dim);font-size:13px;letter-spacing:1px}
-  .plan .amount{font-size:38px;font-weight:700}
-  .plan .amount small{font-size:14px;color:var(--dim);font-weight:400;margin-left:6px}
-  .plan ul{margin:6px 0 0;padding-left:18px;color:var(--dim);font-size:14px}
+  .plan .amount{font-size:36px;font-weight:700}
+  .plan .amount small{font-size:13px;color:var(--dim);font-weight:400;margin-left:4px}
+  .plan ul{padding-left:18px;color:var(--dim);font-size:14px;margin:4px 0}
   .plan .btn{margin-top:auto;text-align:center}
-  .thumb{width:100%;height:280px;object-fit:cover;object-position:top;display:block}
-  .video-box video{width:100%;border-radius:14px;border:1px solid var(--line);display:block}
-  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--faint);font-size:13px}
-  footer .wrap{display:flex;gap:16px;flex-wrap:wrap}
-  @media(max-width:900px){.g5,.g3,.price{grid-template-columns:1fr}
-    .hero h1{font-size:34px} nav .links a:not(.btn){display:none}}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+          padding:14px 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:700}
+  details p{color:var(--dim);margin:8px 0 0;font-size:14px}
+  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--faint);font-size:13px;
+         display:flex;gap:16px;flex-wrap:wrap}
+  @media(max-width:900px){.g3,.g5,.price{grid-template-columns:1fr}header.hero h1{font-size:32px}}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <img src="../img/logo.png" alt="NovelForge">
+    <img src="img/logo.png" alt="NovelForge">
     <b>NovelForge</b>
     <div class="links">
       <a href="#what">Features</a>
       <a href="#vn">Visual novel</a>
-      <a href="#pricing">Pricing</a>
-      <a class="btn" id="dl-top" href="#download">Download</a>
-      <a class="btn primary" id="buy-top" href="#download">Download</a>
+      <a href="#galgame">Galgame</a>
+      <a href="#price">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="../index.html#download">Download</a>
+      <a class="btn primary" href="../galgame.html">Buy</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <div class="kicker">Local-first writing studio</div>
-    <h1>Turn your novel into<br>something playable.</h1>
-    <p class="lead">
-      Write your book, catch continuity errors inline, then generate a playable
-      visual novel from the same text. Your manuscript stays on your machine.
-      Writing is free forever.
-    </p>
-    <div style="display:flex;gap:14px;flex-wrap:wrap">
-      <a class="btn primary" id="dl" href="#download">Download for Windows</a>
-      <a class="btn" href="#vn">See what it generates</a>
+    <div class="kicker">NOVELFORGE · LOCAL-FIRST</div>
+    <h1>Turn your novel into something playable</h1>
+    <p>Write, check continuity, and generate a playable visual novel — or a multi-route Galgame.
+       Writing and visual-novel features are free; AI runs on your own API key.</p>
+    <div class="cta">
+      <a class="btn primary" href="../index.html#download">Download for Windows (ZIP)</a>
+      <a class="btn" href="../index.html#download">Direct .exe</a>
     </div>
-    <div class="meta">Windows 10/11 · ~184 MB installer · 14-day trial · 30 free image credits</div>
-    <img class="shot" src="../img/editor.png" alt="NovelForge editor">
-    <p class="dim" style="font-size:12.5px;margin-top:10px">
-      Screenshots show the current UI (Chinese). An English interface is planned;
-      the workflow is identical.
-    </p>
+    <div class="meta">Windows 10/11 · ~175 MB · core features free forever · your own API key</div>
+    <img class="shot" src="img/editor.png" alt="Writing interface">
   </div>
 </header>
 
 <section id="what">
   <div class="wrap">
-    <div class="kicker">What it does</div>
-    <h2>Five steps, one finished book</h2>
-    <div class="grid g5" style="margin-top:28px">
-      <div class="card"><h3><span class="num">01</span>Write</h3><p>You outline, the model drafts. It never writes behind your back.</p></div>
-      <div class="card"><h3><span class="num">02</span>Check</h3><p>Inline continuity warnings: wounds, hair colour, repeated lines.</p></div>
-      <div class="card"><h3><span class="num">03</span>Convert</h3><p>Script, sprites, backgrounds, and a playable web build.</p></div>
-      <div class="card"><h3><span class="num">04</span>Back up</h3><p>Every save goes to multiple targets you choose.</p></div>
-      <div class="card"><h3><span class="num">05</span>Export</h3><p>EPUB, submission pack, mobile reader, Ren'Py project.</p></div>
+    <div class="kicker">FEATURES</div>
+    <h2>Five steps, one finished novel</h2>
+    <div class="grid g5">
+      <div class="card"><h3><span class="num">01</span>Write</h3><p>You outline; the model only writes when you press the button.</p></div>
+      <div class="card"><h3><span class="num">02</span>Check</h3><p>Inline continuity hints: wounds, hair color, repeated lines.</p></div>
+      <div class="card"><h3><span class="num">03</span>Convert</h3><p>Prose → script → sprites → playable web visual novel.</p></div>
+      <div class="card"><h3><span class="num">04</span>Store</h3><p>Multi-target backups; conflicts resolved by you.</p></div>
+      <div class="card"><h3><span class="num">05</span>Publish</h3><p>EPUB / submission pack / mobile reader / Ren'Py.</p></div>
     </div>
   </div>
 </section>
 
-<section id="vn" style="background:var(--panel2)">
+<section id="vn" class="alt">
   <div class="wrap">
-    <div class="kicker">Visual novel</div>
-    <h2>One click: prose becomes a playable scene</h2>
-    <p class="dim" style="max-width:640px;margin-top:12px">
-      NovelForge converts your chapters into a script, fills in missing sprites and
-      backgrounds, and exports a self-contained web build you can share as a link.
-      You can also export a Ren'Py project and keep editing.
-    </p>
-    <div class="grid g3" style="margin-top:28px">
-      <div class="card" style="padding:0;overflow:hidden">
-        <img class="thumb" src="../img/editor.png" alt="Demo project">
-        <div style="padding:16px 18px"><h3>Sample project included</h3>
-        <p>Open it and generate a visual novel in about a minute.</p></div>
-      </div>
-      <div class="card" style="padding:0;overflow:hidden">
-        <img class="thumb" src="../img/reader.png" alt="Mobile reader">
-        <div style="padding:16px 18px"><h3>Mobile reader + annotations</h3>
-        <p>Send to beta readers; they leave paragraph notes and return JSON.</p></div>
-      </div>
-      <div class="card" style="padding:0;overflow:hidden">
-        <img class="thumb" src="../img/security.png" alt="Safety center">
-        <div style="padding:16px 18px"><h3>Safety center</h3>
-        <p>Multi-target backups, restore, auditable AI call log.</p></div>
-      </div>
+    <div class="kicker">VISUAL NOVEL</div>
+    <h2>One click: your novel becomes playable</h2>
+    <p class="sub">Converts prose into a script, fills sprites and backgrounds, exports a shareable web build
+       or a Ren'Py project. Free, no watermark.</p>
+    <div class="grid g3">
+      <div class="card"><img src="img/editor.png" alt=""><h3>Sample project included</h3><p>Open and generate right away.</p></div>
+      <div class="card"><img src="img/reader.png" alt=""><h3>Mobile reader + comments</h3><p>Share with readers; they annotate and send JSON back.</p></div>
+      <div class="card"><img src="img/security.png" alt=""><h3>Project safety center</h3><p>Backups, restore, exportable AI logs.</p></div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="galgame">
   <div class="wrap">
-    <div class="kicker">New in 2.41</div>
-    <h2>Find features faster, edit with more confidence</h2>
-    <p style="margin-top:12px;color:#9d9484">
-      A search box sits in the toolbar: type to filter every menu action and press Enter to run it.
-      Every web export also keeps a backup, so you can reopen or roll back any time.
-    </p>
-    <div class="grid g3" style="margin-top:28px">
-      <div class="card" style="padding:0;overflow:hidden">
-        <img class="thumb" src="../img/search.png" alt="Feature search">
-        <div style="padding:16px 18px"><h3>Search, don't dig</h3>
-        <p>Press Ctrl+K or use the toolbar box; type &quot;export&quot; to see every related action.</p></div>
-      </div>
-      <div class="card" style="padding:0;overflow:hidden">
-        <img class="thumb" src="../img/history.png" alt="Web version history">
-        <div style="padding:16px 18px"><h3>Web version history</h3>
-        <p>Each export backs up the previous build; the last 8 are kept and can be opened or deleted.</p></div>
-      </div>
-      <div class="card" style="padding:0;overflow:hidden">
-        <img class="thumb" src="../img/fontpicker.png" alt="Font picker">
-        <div style="padding:16px 18px"><h3>Preview fonts as themselves</h3>
-        <p>Every family renders in its own typeface, with search, size control and a live sample.</p></div>
-      </div>
+    <div class="kicker">GALGAME EDITION</div>
+    <h2>Multi-route Galgame, not just a kinetic novel</h2>
+    <p class="sub">A one-time upgrade adds the tools multi-route games need: branching, affection stats,
+       multiple endings, CG gallery, and commercial Ren'Py export.</p>
+    <div class="grid g3">
+      <div class="card"><img src="img/agent.png" alt=""><h3>Branch graph editor</h3><p>Nodes are scenes, edges are choices; generates the script for you.</p></div>
+      <div class="card"><img src="img/foreshadow.png" alt=""><h3>Stats &amp; endings</h3><p>Affection events, conditional routes, ending and CG galleries.</p></div>
+      <div class="card"><img src="img/ai_flavor.png" alt=""><h3>Commercial export</h3><p>Ren'Py project with OFL font, ASCII assets, lint-clean; package to exe.</p></div>
+    </div>
+    <div style="margin-top:22px">
+      <a class="btn primary" href="../galgame.html">See the Galgame edition</a>
     </div>
   </div>
 </section>
 
-
-<section class="video-box">
+<section id="price" class="alt">
   <div class="wrap">
-    <div class="kicker">20-second demo</div>
-    <h2>Write a chapter → generate → play it</h2>
-    <div style="margin-top:24px">
-      <video controls playsinline preload="metadata" poster="../img/editor.png">
-        <source src="../video/demo.mp4" type="video/mp4">
-        Your browser does not support video.
-      </video>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" style="background:var(--panel2)">
-  <div class="wrap">
-    <div class="kicker">Pricing</div>
-    <h2>Writing is free. You pay for AI images and unwatermarked export.</h2>
-    <div class="price" style="margin-top:28px">
+    <div class="kicker">PRICING</div>
+    <h2>Free for writing, one-time for Galgame</h2>
+    <div class="price">
       <div class="plan">
-        <div class="name">Free</div>
+        <div class="name">FREE</div>
         <div class="amount">$0</div>
         <ul>
-          <li>Writing, outline, audit, versions</li>
-          <li>Backups and restore</li>
-          <li>EPUB / submission pack / reader</li>
-          <li>Template-mode visual novel</li>
-          <li>30 image credits on signup</li>
+          <li>Writing / outline / 24 generators</li>
+          <li>Continuity checks / audit / foreshadow map</li>
+          <li>De-AI-flavor / AI assistant</li>
+          <li>One-click visual novel (web + Ren'Py, no watermark)</li>
+          <li>EPUB / submission pack / mobile reader</li>
         </ul>
-        <a class="btn" id="dl-free" href="#download">Download</a>
+        <a class="btn" href="../index.html#download">Download</a>
       </div>
       <div class="plan hot">
-        <div class="name">Lifetime · early bird (coming soon)</div>
-        <div class="amount">$29<small>planned</small></div>
+        <div class="name">GALGAME EDITION · ONE-TIME</div>
+        <div class="amount">$14<small> early bird $7</small></div>
         <ul>
-          <li>Everything in Free, plus:</li>
-          <li>Unwatermarked visual novel export</li>
-          <li>Bring your own API key</li>
-          <li>Updates within the same major version</li>
+          <li>Everything in Free +</li>
+          <li>Branch graph editor</li>
+          <li>Affection stats / conditional routes</li>
+          <li>Multiple endings + ending &amp; CG galleries</li>
+          <li>Commercial Ren'Py export</li>
+          <li>Lifetime use, free minor updates</li>
         </ul>
-        <a class="btn primary" id="buy-299" href="#download">Download free</a>
-      </div>
-      <div class="plan">
-        <div class="name">Lifetime · regular / bundle</div>
-        <div class="amount">$39<small>planned</small></div>
-        <ul>
-          <li>Regular lifetime license</li>
-          <li>Or: lifetime + 300 credits</li>
-          <li>Credits never expire</li>
-        </ul>
-        <a class="btn" id="buy-199" href="#download">Download free</a>
+        <a class="btn primary" href="../galgame.html">Unlock Galgame</a>
       </div>
     </div>
-    <p class="dim" style="margin-top:16px;font-size:13.5px">
-      AI images use credits: 1 credit = 1 image. Packs: $4 / 150 credits, $6 / 300 credits.
-      Template mode does not consume credits.
-    </p>
+    <p class="meta">AI costs are yours: bring your own API key (DeepSeek, Zhipu, SiliconFlow) or run local ComfyUI.
+       No credits, no markup.</p>
   </div>
 </section>
 
-<section id="buy">
-  <div class="wrap">
-    <div class="kicker">How to buy</div>
-    <h2>Four steps, usually under 10 minutes</h2>
-    <div class="grid" style="grid-template-columns:repeat(4,1fr);margin-top:28px">
-      <div class="card"><h3>1. Download</h3><p>Free 14-day trial, no payment needed.</p></div>
-      <div class="card"><h3>2. Buy</h3><p>Online checkout is not open yet — download and try free meanwhile.</p></div>
-      <div class="card"><h3>3. Get your license key</h3><p>Shown after payment and emailed to you.</p></div>
-      <div class="card"><h3>4. Activate</h3><p>Paste the key in the app: Structure → Activate / License.</p></div>
-    </div>
-    <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap">
-      <a class="btn primary" id="dl-bottom" href="#download">Start free trial</a>
-      <a class="btn" id="shop" href="#buy">Open checkout</a>
-    </div>
-  </div>
-</section>
-
-<section style="background:var(--panel2)">
+<section id="faq">
   <div class="wrap">
     <div class="kicker">FAQ</div>
-    <h2>Questions people ask</h2>
-    <div style="margin-top:24px">
-      <details open><summary>Is my manuscript uploaded anywhere?</summary>
-        <p>No. Files stay on your machine. Content is only sent when you explicitly run an AI action,
-        and you can set AI permissions to “never use cloud”, or enable redaction (names replaced with tokens).</p></details>
-      <details><summary>Do I need an NVIDIA GPU?</summary>
-        <p>No. Writing, auditing and export all work without one. The visual novel has a template mode
-        that generates art locally without any model. Local AI art requires ComfyUI; cloud AI just needs an API key.</p></details>
-      <details><summary>Do AI images cost extra?</summary>
-        <p>Yes: 1 credit per image. Packs are $4/150 and $6/300. You can also bring your own API key and pay the provider directly. Template mode is free.</p></details>
-      <details><summary>Can I use it on a second computer?</summary>
-        <p>One license covers one machine while activated. Contact us to transfer your license.</p></details>
-      <details><summary>Why does Windows warn about an unknown publisher?</summary>
-        <p>The installer is not code-signed yet. Click “More info → Run anyway”. We are working on signing.</p></details>
-    </div>
+    <h2>Questions you may have</h2>
+    <details><summary>Do I have to pay for AI usage?</summary>
+      <p>No. The app charges nothing for AI: plug in your own API key and pay your provider directly.
+         Local ComfyUI is free.</p></details>
+    <details><summary>Can I sell the games I make?</summary>
+      <p>Yes. The Galgame edition includes commercial export rights; build a Windows exe with Ren'Py.
+         Check your voice/asset licenses before selling.</p></details>
+    <details><summary>Can I export visual novels in the free version?</summary>
+      <p>Yes, without a watermark. The paid edition only adds multi-route Galgame tools and commercial export.</p></details>
+    <details><summary>Why "Unknown publisher" on Windows?</summary>
+      <p>The installer is not code-signed yet. Click "More info → Run anyway".</p></details>
+    <details><summary>Does it work offline?</summary>
+      <p>Writing, backups, exports and local ComfyUI work offline. AI features need your key/provider.</p></details>
   </div>
 </section>
 
-<footer id="download">
-  <div class="wrap">
+<footer>
+  <div class="wrap" style="display:flex;gap:16px;flex-wrap:wrap">
     <span>© 2026 NovelForge</span>
-    <a id="dl-foot" href="#download">Download for Windows</a>
-    <a href="terms.html">Terms</a>
-    <a href="privacy.html">Privacy</a>
-    <a id="support" href="#" style="display:none">Support on Afdian →</a>
-    <span style="margin-left:auto">Turn your novel into something playable.</span>
+    <a href="licenses/terms.html">Terms</a>
+    <a href="licenses/privacy.html">Privacy</a>
+    <a href="../index.html">中文</a>
+    <span style="margin-left:auto">Make your novel playable.</span>
   </div>
 </footer>
 
-<script>
-// Fill these in after creating products on Creem.
-const AFDIAN_URL = "https://ifdian.net/a/jzy0454";
-// TODO: replace with Gumroad / Payhip links after listing
-const AFDIAN = "https://ifdian.net/a/jzy0454";
-const LINKS = {
-  download: "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.50-setup.exe",
-  checkoutLifetime: "",     // Creem checkout link for lifetime ($29 or $39)
-  checkoutCredits: "",      // Creem checkout link for credits
-  terms: "terms.html",
-  privacy: "privacy.html"
-};
-const set = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
-["dl","dl-top","dl-free","dl-bottom","dl-foot"].forEach(id => set(id, LINKS.download));
-set("buy-top", LINKS.checkoutLifetime);
-set("buy-299", LINKS.checkoutLifetime);
-set("buy-199", LINKS.checkoutLifetime);
-
-const sup = document.getElementById("support");
-if (sup && AFDIAN_URL) { sup.href = AFDIAN_URL; sup.style.display = "inline"; }
-</script>
 </body>
 </html>
