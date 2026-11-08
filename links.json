@@ -1,11 +1,11 @@
 {
-  "download": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.46-setup.exe",
+  "download": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.47-setup.exe",
   "shop": "https://ifdian.net/a/jzy0454",
   "buy199": "https://ifdian.net/a/jzy0454",
   "buy299": "https://ifdian.net/a/jzy0454",
   "terms": "licenses/terms.html",
   "privacy": "licenses/privacy.html",
-  "download_backup": "https://github.com/jeans912/novel-forge-site/releases/download/v2.46/NovelForge-2.46-setup.exe",
-  "version": "2.46",
-  "sha256": "D6539D4A6BEE58E388CD2109C9BC4CF04F5647241798F9C499F9BA02E4B20183"
+  "download_backup": "https://github.com/jeans912/novel-forge-site/releases/download/v2.47/NovelForge-2.47-setup.exe",
+  "version": "2.47",
+  "sha256": "C9012578BE4B63AE3DE40804893F6F25520CAE548EED6A04DC8D04A8145D973C"
 }
