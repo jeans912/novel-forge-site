@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>小说工坊 NovelForge · 把小说变成能玩的东西</title>
-<meta name="description" content="本地优先的 AI 写作台：写小说、查一致性、一键生成可玩的视觉小说。写作永久免费。">
+<title>养设日记 · 把 OC 变成能玩的小剧场</title>
+<meta name="description" content="给 OC 创作者的角色卡与小剧场工具：角色卡、关系图、小剧场、分享链接。本地优先，AI 用你自己的 Key。">
 <style>
   :root {
     --bg:#0f1115; --panel:#161920; --panel2:#1b1f27; --line:#262b34;
@@ -117,6 +117,29 @@
     .hero h1 { font-size:34px; }
     nav .links a:not(.btn) { display:none; }
   }
+
+  /* ── 奶油手帐主题覆盖 ───────────────────────────── */
+  :root{
+    --bg:#FBF7F0; --panel:#FFFFFF; --panel2:#FDF6EE; --line:#EADFD2;
+    --text:#3E3A35; --dim:#8A7F72; --faint:#B3A597;
+    --accent:#E58FA4; --accent2:#C86B84; --radius:18px;
+  }
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:15.5px}
+  nav{background:rgba(251,247,240,.92);border-bottom:1px solid var(--line)}
+  nav .links a{color:var(--dim)}
+  nav .links a:hover{color:var(--text)}
+  .btn{border-radius:12px;background:#fff;color:var(--text)}
+  .btn:hover{border-color:var(--accent)}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn.primary:hover{background:var(--accent2)}
+  .card{box-shadow:0 10px 30px rgba(180,150,130,.10)}
+  .shot{box-shadow:0 20px 50px rgba(150,120,100,.22);border-color:var(--line)}
+  .plan.hot{background:linear-gradient(180deg,#FFF0F4,#FFFBF6);border-color:var(--accent)}
+  .kicker{letter-spacing:2px}
+  h1,h2{letter-spacing:.5px}
+  .hero h1{font-size:44px}
+  section.alt,.alt{background:#FDF6EE}
+  code{background:#F6EDE3;color:#7A3B4D;padding:1px 6px;border-radius:6px}
 </style>
 </head>
 <body>
@@ -124,7 +147,7 @@
 <nav>
   <div class="wrap">
     <img src="img/logo.png" alt="logo">
-    <b>小说工坊</b>
+    <b>养设日记</b>
     <div class="links">
       <a href="#what">能做什么</a>
       <a href="#vn">视觉小说</a>
@@ -142,9 +165,9 @@
     <div class="kicker">NOVELFORGE · 本地优先</div>
     <h1>把小说，变成能玩的东西</h1>
     <p class="lead">
-      写小说、查设定冲突、一键生成可玩的视觉小说。
+      建角色卡、画关系图、写小剧场，导出能分享的网页版。
       稿子存在你自己的电脑上；AI 只在你按按钮时工作。
-      <b>写作、章纲、视觉小说全部免费</b>；多线 Galgame 制作版单独买断。
+      <b>写作与小剧场全部免费</b>；多线剧情制作版单独买断。
     </p>
     <div class="cta">
       <a class="btn primary" href="#download" id="dl">下载 Windows 版（ZIP）</a>
@@ -159,13 +182,13 @@
 <section id="what">
   <div class="wrap">
     <div class="kicker">它能做什么</div>
-    <h2>五件事，按顺序做完，一本小说就成型了</h2>
+    <h2>五件事，把一张角色卡变成能玩的小剧场</h2>
     <div class="grid g5" style="margin-top:28px">
-      <div class="card"><h3><span class="num">01</span>写</h3><p>人写章纲，模型铺正文。<br>AI 不会偷偷写。</p></div>
-      <div class="card"><h3><span class="num">02</span>查</h3><p>行内一致性提示：<br>伤口、发色、重复句。</p></div>
-      <div class="card"><h3><span class="num">03</span>转</h3><p>正文 → 剧本 → 立绘 →<br>可玩的网页版视觉小说。</p></div>
-      <div class="card"><h3><span class="num">04</span>存</h3><p>每次保存备份到多个目标，<br>冲突时由你选择。</p></div>
-      <div class="card"><h3><span class="num">05</span>出</h3><p>EPUB / 投稿包 /<br>手机阅读版 / Ren'Py。</p></div>
+      <div class="card"><h3><span class="num">01</span>建卡</h3><p>人写章纲，模型铺正文。<br>AI 不会偷偷写。</p></div>
+      <div class="card"><h3><span class="num">02</span>连关系</h3><p>行内一致性提示：<br>伤口、发色、重复句。</p></div>
+      <div class="card"><h3><span class="num">03</span>做小剧场</h3><p>正文 → 剧本 → 立绘 →<br>可玩的网页版视觉小说。</p></div>
+      <div class="card"><h3><span class="num">04</span>存档</h3><p>每次保存备份到多个目标，<br>冲突时由你选择。</p></div>
+      <div class="card"><h3><span class="num">05</span>分享</h3><p>EPUB / 投稿包 /<br>手机阅读版 / Ren'Py。</p></div>
     </div>
   </div>
 </section>
