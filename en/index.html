@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NovelForge · Turn your novel into something playable</title>
+<title>Yangshe Diary · Make your OC playable</title>
 <style>
   :root{
     --bg:#101216; --panel:#161920; --panel2:#12151b; --line:#262b33;
@@ -60,6 +60,21 @@
   footer{border-top:1px solid var(--line);padding:26px 0;color:var(--faint);font-size:13px;
          display:flex;gap:16px;flex-wrap:wrap}
   @media(max-width:900px){.g3,.g5,.price{grid-template-columns:1fr}header.hero h1{font-size:32px}}
+
+  /* cream handbook theme */
+  :root{
+    --bg:#FBF7F0; --panel:#FFFFFF; --panel2:#FDF6EE; --line:#EADFD2;
+    --text:#3E3A35; --dim:#8A7F72; --faint:#B3A597;
+    --accent:#E58FA4; --accent2:#C86B84; --radius:18px;
+  }
+  body{font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  nav{background:rgba(251,247,240,.94)}
+  .btn{background:#fff;color:var(--text)}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn.primary:hover{background:var(--accent2)}
+  .card{box-shadow:0 10px 30px rgba(180,150,130,.10)}
+  .shot{box-shadow:0 20px 50px rgba(150,120,100,.22)}
+  .plan.hot{background:linear-gradient(180deg,#FFF0F4,#FFFBF6)}
 </style>
 </head>
 <body>
@@ -67,7 +82,7 @@
 <nav>
   <div class="wrap">
     <img src="img/logo.png" alt="NovelForge">
-    <b>NovelForge</b>
+    <b>Yangshe Diary</b>
     <div class="links">
       <a href="#what">Features</a>
       <a href="#vn">Visual novel</a>
@@ -83,9 +98,9 @@
 <header class="hero">
   <div class="wrap">
     <div class="kicker">NOVELFORGE · LOCAL-FIRST</div>
-    <h1>Turn your novel into something playable</h1>
-    <p>Write, check continuity, and generate a playable visual novel — or a multi-route Galgame.
-       Writing and visual-novel features are free; AI runs on your own API key.</p>
+    <h1>Turn your OC into something playable</h1>
+    <p>Build character cards, relationship maps and mini-theatre scenes — then share a playable link.
+       Writing and mini-theatre tools are free; AI runs on your own API key.</p>
     <div class="cta">
       <a class="btn primary" href="../index.html#download">Download for Windows (ZIP)</a>
       <a class="btn" href="../index.html#download">Direct .exe</a>
