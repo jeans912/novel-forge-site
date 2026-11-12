@@ -1,8 +1,8 @@
 {
-  "version": "2.54",
-  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.54-setup.exe",
-  "sha256": "f6d5dac050e3af1318c2c8d945b61add922920cdd407e1182b9cad43dcbfb9df",
-  "notes": "﻿2.54：新增匿名启动统计（可在设置关闭，只上报版本 + 机器码哈希，不上传正文）；关于页版本号改为跟随程序版本；其余与 2.53 相同。\n",
-  "released": "2026-11-08",
+  "version": "2.56",
+  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.56-setup.exe",
+  "sha256": "1df7535ba412b573fa663a7a957ff21de9d1e5ebbffd3459a993e45a6f6eb925",
+  "notes": "﻿2.56：一键生成视觉小说前增加确认框（章节/素材/步骤/输出目录，可选配音）；撤销 OC 特供，品牌与主题回到小说工坊。\n",
+  "released": "2026-11-12",
   "min_version": "2.0.0"
 }
