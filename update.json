@@ -1,8 +1,8 @@
 {
-  "version": "2.56",
-  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.56-setup.exe",
-  "sha256": "1df7535ba412b573fa663a7a957ff21de9d1e5ebbffd3459a993e45a6f6eb925",
-  "notes": "﻿2.56：一键生成视觉小说前增加确认框（章节/素材/步骤/输出目录，可选配音）；撤销 OC 特供，品牌与主题回到小说工坊。\n",
+  "version": "2.57",
+  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.57-setup.exe",
+  "sha256": "cfc7bad6d92502e142de7b116a245132d710da06513ebe1d74c7be31815c43b4",
+  "notes": "﻿2.57：正式价 ¥69（早鸟 ¥49）；激活码改为 25 字符短码（适配爱发电 53 字符上限）；一键生成前确认框。\n",
   "released": "2026-11-12",
   "min_version": "2.0.0"
 }
