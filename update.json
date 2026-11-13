@@ -1,8 +1,8 @@
 {
-  "version": "2.57",
-  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.57-setup.exe",
-  "sha256": "cfc7bad6d92502e142de7b116a245132d710da06513ebe1d74c7be31815c43b4",
-  "notes": "﻿2.57：正式价 ¥69（早鸟 ¥49）；激活码改为 25 字符短码（适配爱发电 53 字符上限）；一键生成前确认框。\n",
-  "released": "2026-11-12",
+  "version": "2.59",
+  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.59-setup.exe",
+  "sha256": "d1f35ab00b5cb8e95a82c1ef648dfd5c21364c2f992054ff87cfeacc3446d4e3",
+  "notes": "﻿2.59：修复确认框参数错误与 14 处 QDialog.Accepted 写法（一键生成、Galgame 保存、伏笔编辑等按钮无反应）；新增服务商预设；正式价 ¥69、25 字符短码。\n",
+  "released": "2026-11-13",
   "min_version": "2.0.0"
 }
