@@ -1,8 +1,8 @@
 {
-  "version": "2.59",
-  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.59-setup.exe",
-  "sha256": "d1f35ab00b5cb8e95a82c1ef648dfd5c21364c2f992054ff87cfeacc3446d4e3",
-  "notes": "﻿2.59：修复确认框参数错误与 14 处 QDialog.Accepted 写法（一键生成、Galgame 保存、伏笔编辑等按钮无反应）；新增服务商预设；正式价 ¥69、25 字符短码。\n",
-  "released": "2026-11-13",
+  "version": "2.61",
+  "url": "https://novelforge.oss-cn-hangzhou.aliyuncs.com/NovelForge-2.61-setup.exe",
+  "sha256": "3e1a533ffffa6f6616f70a0761deecbfd7723fe04eea27370ed45dc52281533f",
+  "notes": "﻿2.61：设置页可选择 ComfyUI 模型并自动生成三份工作流（自动检测地址/读取模型列表/回填路径）；选项条件锁；一码一机；点数生图残留清理。\n",
+  "released": "2026-11-20",
   "min_version": "2.0.0"
 }
